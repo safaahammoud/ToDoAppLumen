@@ -2,6 +2,9 @@ version: '3'
 networks:
   laravel:
 services:
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
   php:
     networks:
       -laravel
