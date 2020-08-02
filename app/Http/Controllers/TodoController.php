@@ -41,9 +41,12 @@ class TodoController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'description' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+            "status_id"=> 'required',
+            "category" => "required",
+            "date_time" => "nullable",
+            "user_id"=>"required"
         ]);
-// (Completed, Snoozed, Overdue)
         if(Auth::user()->todo()->Create($request->all())){
 
             return response()->json(['status' => 'success']);
@@ -88,9 +91,13 @@ class TodoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'filled',
-            'description' => 'filled',
-            'category' => 'filled'
+            'name' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            "status_id"=> 'required',
+            "category" => "required",
+            "date_time" => "nullable",
+            "user_id"=>"required"
         ]);
 
         $todo = Todo::find($id);

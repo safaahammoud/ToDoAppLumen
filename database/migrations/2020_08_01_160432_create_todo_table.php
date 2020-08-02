@@ -17,8 +17,9 @@ class CreateTodoTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('status');
+            $table->string('status_id');
             $table->string('category');
+            $table->string('date_time');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -32,6 +33,7 @@ class CreateTodoTable extends Migration
      */
     public function down()
     {
+        Schema::dropForeign('user_id');
         Schema::dropIfExists('todo');
     }
 }

@@ -2,31 +2,26 @@
 
 namespace App;
 
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Lumen\Auth\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract
+class User extends Model implements Authenticatable
 {
-    use Authenticatable, Authorizable;
+    use AuthenticableTrait;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email',
-    ];
+    protected $fillable = ['firstName','lastName','email','mobileNumber','gender', 'password',  'birthday'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password',
+        'password'
     ];
+
+    /*
+    * Get Todo of User
+    *
+    */
+    public function todo()
+    {
+        return $this->hasMany('App\Todo','user_id');
+    }
 }

@@ -8,5 +8,17 @@ class Todo extends Model
 {
     protected $table = 'todo';
 
-    protected $fillable = ['name', 'description', 'user_id', 'category', 'status'];
+    protected $fillable = [
+        'name',
+        'description',
+        'user_id',
+        'category',
+        'status_id',
+        'date_time'
+    ];
+
+    public function status()
+    {
+        return $this->hasOne('App\Task_Status');
+    }
 }
