@@ -8,4 +8,5 @@ $router->group(['prefix' => 'api/'], function() use ($router) {
     $router->get('todo/{id}/', 'TodoController@show');
     $router->put('todo/{id}/', 'TodoController@update');
     $router->delete('todo/{id}/', 'TodoController@destroy');
+    $router->get('todo/{task_status_id}/filter', 'TodoController@filterByStatus');
 });

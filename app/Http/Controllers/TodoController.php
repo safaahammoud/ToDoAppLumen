@@ -121,4 +121,10 @@ class TodoController extends Controller
             return response()->json(['status' => 'success']);
         }
     }
+
+    public function filterByStatus($task_status_id){
+        $tasks = Todo::where('status_id',$task_status_id)
+            ->get();
+        return response()->json(['tasks' => $tasks]);
+    }
 }
