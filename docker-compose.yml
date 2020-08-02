@@ -29,9 +29,9 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root@123
+      MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: todoapp
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root@123
+      MYSQL_USER: secret
+      MYSQL_PASSWORD: secret
   cache:
     image: memcached:1.6-alpine
